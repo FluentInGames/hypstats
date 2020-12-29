@@ -40,7 +40,7 @@ module.exports = {
 					.setThumbnail(`https://crafatar.com/avatars/${playerInfo.uuid}?overlay`)
 
 				let baseStats = ["health", "defense", "strength", "speed", "crit_chance", "crit_damage", "bonus_attack_speed", "intelligence", "sea_creature_chance", "magic_find", "pet_luck", "ferocity"];
-				let prettyNames = ["❤ Health", "🛡️ Defense", "💪 Strength", "💨 Speed", "🎲 Crit Chance", "⚔ Crit Damage", "🗡️ Attack Speed", "🎓 Intelligence", "🎣 Sea Creature Chance", "🔍 Magic Find", "☘ Pet Luck", "// Ferocity"];
+				let prettyNames = ["❤ Health", "❈️ Defense", "❁ Strength", "✦ Speed", "☣ Crit Chance", "☠ Crit Damage", "⚔ Attack Speed", "✎ Intelligence", "α Sea Creature Chance", "✯ Magic Find", "☘ Pet Luck", "⫽ Ferocity"];
 				for (let i = 0; i < baseStats.length; i++) {
 					let stat = baseStats[i];
 					let total = profile.data.stats[stat] + profile.data.fairy_bonus[stat];
