@@ -1,9 +1,9 @@
+const fetch = require('node-fetch');
+const Discord = require('discord.js');
+
 module.exports = {
 	name: 'skyblock',
 	async execute(message, args, playerInfo) {
-
-		const fetch = require('node-fetch');
-		const Discord = require('discord.js');
 
 		let response = await fetch(`https://sky.shiiyu.moe/api/v2/profile/${args[1]}`);
 		let data = await response.json();
@@ -15,7 +15,7 @@ module.exports = {
 			if (args.length !== 3) {
 				let profiles = new Discord.MessageEmbed()
 					.setTitle(`${playerInfo.rank} ${playerInfo.name}'s Skyblock Profiles`)
-					.setDescription("```;sb <username> <profile>```\n")
+					.setDescription("Usage: ```;sb <username> <profile>```\n")
 					.setThumbnail(`https://crafatar.com/avatars/${playerInfo.uuid}?overlay`)
 				let profileList = "";
 				for (let [key, value] of Object.entries(data.profiles)) {
@@ -26,7 +26,7 @@ module.exports = {
 					profileList = "";
 				}
 
-				message.channel.send(profiles);
+				await message.channel.send(profiles);
 
 			} else {
 				let profile;
@@ -47,7 +47,7 @@ module.exports = {
 					basicStats.addField(prettyNames[i], "```" + total + "```", true);
 				}
 
-				message.channel.send(basicStats);
+				await message.channel.send(basicStats);
 
 			}
 

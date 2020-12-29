@@ -56,16 +56,16 @@ bot.on("message", async message => {
   }
 
   if (message.content.startsWith(prefix)) {
+    let playerInfo = await bot.methods.get("playerInfo").execute(args[1]);
+
     if (args[0] === "bw" || args[0] === "bedwars") {
       bot.commands.get("bedwars2").execute(message, args, bot.methods);
 
     } else if (args[0] === "sb" || args[0] === "skyblock") {
-      await message.channel.send("This command is not yet functional, please come back later!");
-      //let playerInfo = await bot.methods.get("playerInfo").execute(args[1]);
-      //bot.commands.get("skyblock").execute(message, args, playerInfo);
+      if (message.author.id !== "398890149607637013") return message.channel.send("This command is not yet functional, please come back later!");
+      bot.commands.get("skyblock").execute(message, args, playerInfo);
 
     } else if (args[0] === "p" || args[0] === "player") {
-      let playerInfo = await bot.methods.get("playerInfo").execute(args[1]);
       bot.commands.get("player").execute(message, args, playerInfo, bot.methods);
 
     } else if (args[0] === "thing") {
