@@ -10,10 +10,7 @@ const prefix = ";";
 
 // bot commands
 bot.commands = new Discord.Collection();
-const commandFiles = fs
-  .readdirSync("./commands")
-  .filter((file) => file.endsWith(".js"));
-
+const commandFiles = fs.readdirSync("./commands").filter((file) => file.endsWith(".js"));
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   bot.commands.set(command.name, command);
@@ -21,10 +18,7 @@ for (const file of commandFiles) {
 
 // bot methods
 bot.methods = new Discord.Collection();
-const methodFiles = fs
-    .readdirSync("./methods")
-    .filter((file) => file.endsWith(".js"));
-
+const methodFiles = fs.readdirSync("./methods").filter((file) => file.endsWith(".js"));
 for (const file of methodFiles) {
   const method = require(`./methods/${file}`);
   bot.methods.set(method.name, method);
