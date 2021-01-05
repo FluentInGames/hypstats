@@ -22,9 +22,7 @@ for (const file of methodFiles) {
 }
 
 
-
-bot.login("");
-//bot.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
 
 bot.on("ready", () => {
     console.log("Bot online!");
