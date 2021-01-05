@@ -1,4 +1,4 @@
 node_modules
-commands/backdoor.js
 .idea
 package-lock.json
+.DS_Store

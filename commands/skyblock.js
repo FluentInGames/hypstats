@@ -39,18 +39,28 @@ module.exports = {
 					.setTitle(`${playerInfo.rank} ${playerInfo.name} | ${profile.cute_name}`)
 					.setThumbnail(`https://crafatar.com/avatars/${playerInfo.uuid}?overlay`)
 
-				let baseStats = ["health", "defense", "strength", "speed", "crit_chance", "crit_damage", "bonus_attack_speed", "intelligence", "sea_creature_chance", "magic_find", "pet_luck", "ferocity"];
-				let prettyNames = ["❤ Health", "❈️ Defense", "❁ Strength", "✦ Speed", "☣ Crit Chance", "☠ Crit Damage", "⚔ Attack Speed", "✎ Intelligence", "α Sea Creature Chance", "✯ Magic Find", "☘ Pet Luck", "⫽ Ferocity"];
-				for (let i = 0; i < baseStats.length; i++) {
-					let stat = baseStats[i];
-					let total = profile.data.stats[stat] + profile.data.fairy_bonus[stat];
-					basicStats.addField(prettyNames[i], "```" + total + "```", true);
-				}
+				let baseStats = [
+					"health", "defense", "strength", "speed", "crit_chance",
+					"crit_damage", "bonus_attack_speed", "intelligence",
+					"sea_creature_chance", "magic_find", "pet_luck", "ferocity", "ability_damage"
+				];
+				let prettyNames = [
+					"❤ Health", "❈️ Defense", "❁ Strength", "✦ Speed",
+					"☣ Crit Chance", "☠ Crit Damage", "⚔ Attack Speed",
+					"✎ Intelligence", "α Sea Creature Chance", "✯ Magic Find",
+					"☘ Pet Luck", "⫽ Ferocity", "Ability Damage"
+				];
+
+				let pretty = 0;
+				baseStats.forEach(stat => {
+					let total = profile.data.stats[stat];
+					basicStats.addField(prettyNames[pretty], "```" + total + "```", true);
+					pretty += 1;
+				});
 
 				await message.channel.send(basicStats);
 
 			}
-
 		}
 	}
 };
